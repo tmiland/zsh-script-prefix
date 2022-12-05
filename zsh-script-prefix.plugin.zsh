@@ -33,13 +33,12 @@ __script-prefix-replace-buffer() {
 
 script-prefix-command-line() {
   # If line is empty, get the last run command from history
-  [[ -z $BUFFER ]] && LBUFFER="$(fc -ln -1)" {
+  [[ -z $BUFFER ]] && LBUFFER="$(fc -ln -1)"
       case "$BUFFER" in
         \./\ *) __script-prefix-replace-buffer "./" "" ;;
         *) LBUFFER="./$LBUFFER" ;;
       esac
       return
-  }
 }
 
 zle -N script-prefix-command-line
